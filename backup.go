@@ -210,7 +210,7 @@ func backup(ID string) error {
 		Mounts:  conf.Mounts,
 	}
 
-	filename := sanitize.Path(fmt.Sprintf("%s-%s", conf.Config.Image, ID))
+	filename := sanitize.Path(fmt.Sprintf("%s-%s-%d", conf.Config.Image, ID, time.Now().Unix()))
 	filename = strings.Replace(filename, "/", "_", -1)
 	if optTar {
 		return backupTar(filename, backup)
